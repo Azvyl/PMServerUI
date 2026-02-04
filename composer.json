@@ -1,5 +1,5 @@
 {
-  "name": "davycraft648/pmserver-ui",
+  "name": "azvyl/pmserver-ui",
   "description": "Integrate UI features available in the Script API to PocketMine-MP",
   "type": "library",
   "license": "MIT",
@@ -12,7 +12,7 @@
   "extra": {
     "virion": {
       "spec": "3.0",
-      "namespace-root": "DavyCraft648\\PMServerUI"
+      "namespace-root": "Azvyl\\PMServerUI"
     }
   }
 }

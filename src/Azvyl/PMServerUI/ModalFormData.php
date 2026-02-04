@@ -2,9 +2,9 @@
 
 /*
  * PMServerUI
- * https://github.com/DavyCraft648/PMServerUI
+ * https://github.com/Azvyl/PMServerUI
  *
- * Copyright (c) 2025 DavyCraft648
+ * Copyright (c) 2026 Azvyl
  *
  * Licensed under the MIT License.
  * See LICENSE file in the project root for details.
@@ -12,7 +12,7 @@
 
 declare(strict_types=1);
 
-namespace DavyCraft648\PMServerUI;
+namespace Azvyl\PMServerUI;
 
 use pocketmine\lang\Translatable;
 use pocketmine\player\Player;
