@@ -14,9 +14,7 @@ declare(strict_types=1);
 
 namespace Azvyl\PMServerUI\ddui;
 
-/**
- * Represents a subscription returned from Observable::subscribe.
- */
+/** Represents a subscription returned from Observable::subscribe. */
 final class Subscription{
 	private bool $active = true;
 	/** @var callable|null */

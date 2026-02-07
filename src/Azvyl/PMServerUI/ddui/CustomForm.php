@@ -18,9 +18,7 @@ use Azvyl\PMServerUI\Promise;
 use Azvyl\PMServerUI\UIRawMessage;
 use pocketmine\player\Player;
 
-/**
- * A customizable form that lets you put buttons, labels, toggles, dropdowns, sliders, and more into a form.
- */
+/** A customizable form that lets you put buttons, labels, toggles, dropdowns, sliders, and more into a form. */
 final class CustomForm extends DDUI{
 
 	/**
@@ -46,23 +44,17 @@ final class CustomForm extends DDUI{
 		throw new \RuntimeException("Not implemented");
 	}
 
-	/**
-	 * Can this form be shown to the player right now?
-	 */
+	/** Can this form be shown to the player right now? */
 	public function canShow() : bool{
 		throw new \RuntimeException("Not implemented");
 	}
 
-	/**
-	 * Closes the form. Throws an error if the form is not open.
-	 */
+	/** Closes the form. Throws an error if the form is not open. */
 	public function close() : void{
 		throw new \RuntimeException("Not implemented");
 	}
 
-	/**
-	 * Adds a close "X" button to the form.
-	 */
+	/** Adds a close "X" button to the form. */
 	public function closeButton() : self{
 		throw new \RuntimeException("Not implemented");
 	}

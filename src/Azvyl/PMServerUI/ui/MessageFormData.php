@@ -17,9 +17,7 @@ namespace Azvyl\PMServerUI\ui;
 use Azvyl\PMServerUI\UIRawMessage;
 use pocketmine\form\FormValidationException;
 
-/**
- * Builder for a simple message form with two buttons.
- */
+/** Builder for a simple message form with two buttons. */
 final class MessageFormData extends ServerUI{
 	private array|null|string $title = null;
 	private array|null|string $body = null;
@@ -46,9 +44,7 @@ final class MessageFormData extends ServerUI{
 		return $this;
 	}
 
-	/**
-	 * @internal
-	 */
+	/** @internal */
 	public function toPacketFormData() : array{
 		return [
 			'type' => 'modal',
@@ -59,9 +55,7 @@ final class MessageFormData extends ServerUI{
 		];
 	}
 
-	/**
-	 * @internal
-	 */
+	/** @internal */
 	public function processResponse(string $rawData = null, FormCancelationReason $cancelReason = null) : MessageFormResponse{
 		if($cancelReason !== null){
 			return new MessageFormResponse($cancelReason, null);

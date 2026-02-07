@@ -18,14 +18,10 @@ use Azvyl\PMServerUI\Promise;
 use Azvyl\PMServerUI\UIRawMessage;
 use pocketmine\player\Player;
 
-/**
- * A simple 2-button modal message box.
- */
+/** A simple 2-button modal message box. */
 final class MessageBox extends DDUI{
 
-	/**
-	 * Creates a message form for a certain player.
-	 */
+	/** Creates a message form for a certain player. */
 	public static function create(Player $player) : self{
 		throw new \RuntimeException("Not implemented");
 	}
@@ -42,7 +38,7 @@ final class MessageBox extends DDUI{
 	/**
 	 * Sets the data for the top button in the form.
 	 *
-	 * @param Observable<string>|string|UIRawMessage $label
+	 * @param Observable<string>|string|UIRawMessage      $label
 	 * @param Observable<string>|string|UIRawMessage|null $tooltip
 	 */
 	public function button1(Observable|string|UIRawMessage $label, Observable|string|UIRawMessage $tooltip = null) : self{
@@ -52,23 +48,19 @@ final class MessageBox extends DDUI{
 	/**
 	 * Sets the data for the bottom button in the form.
 	 *
-	 * @param Observable<string>|string|UIRawMessage $label
+	 * @param Observable<string>|string|UIRawMessage      $label
 	 * @param Observable<string>|string|UIRawMessage|null $tooltip
 	 */
 	public function button2(Observable|string|UIRawMessage $label, Observable|string|UIRawMessage $tooltip = null) : self{
 		throw new \RuntimeException("Not implemented");
 	}
 
-	/**
-	 * Closes the form. Will throw an error if the form is not open.
-	 */
+	/** Closes the form. Will throw an error if the form is not open. */
 	public function close() : void{
 		throw new \RuntimeException("Not implemented");
 	}
 
-	/**
-	 * Show this modal to the player. Will throw an error if the modal is already showing.
-	 */
+	/** Show this modal to the player. Will throw an error if the modal is already showing. */
 	public function show(Player $player) : Promise{
 		throw new \RuntimeException("Not implemented");
 	}

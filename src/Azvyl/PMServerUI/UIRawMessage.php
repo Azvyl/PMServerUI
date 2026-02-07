@@ -17,9 +17,7 @@ namespace Azvyl\PMServerUI;
 use pocketmine\utils\Utils;
 use function array_map;
 
-/**
- * A subset of the RawMessage type, and is used for UI messages.
- */
+/** A subset of the RawMessage type, and is used for UI messages. */
 final class UIRawMessage{
 
 	/**

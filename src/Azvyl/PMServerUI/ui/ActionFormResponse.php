@@ -14,9 +14,7 @@ declare(strict_types=1);
 
 namespace Azvyl\PMServerUI\ui;
 
-/**
- * Response for ActionFormData. Contains the selected button index.
- */
+/** Response for ActionFormData. Contains the selected button index. */
 readonly class ActionFormResponse extends FormResponse{
 	/**
 	 * @param int|null $selection Returns the index of the button that was pushed.

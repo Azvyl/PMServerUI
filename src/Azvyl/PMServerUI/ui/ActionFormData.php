@@ -18,9 +18,7 @@ use Azvyl\PMServerUI\UIRawMessage;
 use pocketmine\form\FormValidationException;
 use function is_numeric;
 
-/**
- * Builder for a simple action form with a list of buttons.
- */
+/** Builder for a simple action form with a list of buttons. */
 final class ActionFormData extends ServerUI{
 	private array|null|string $title = null;
 	private array|null|string $body = null;
@@ -65,9 +63,7 @@ final class ActionFormData extends ServerUI{
 		return $this;
 	}
 
-	/**
-	 * @internal
-	 */
+	/** @internal */
 	public function toPacketFormData() : array{
 		return [
 			'type' => 'form',
@@ -77,9 +73,7 @@ final class ActionFormData extends ServerUI{
 		];
 	}
 
-	/**
-	 * @internal
-	 */
+	/** @internal */
 	public function processResponse(string $rawData = null, FormCancelationReason $cancelReason = null) : ActionFormResponse{
 		if($cancelReason !== null){
 			return new ActionFormResponse($cancelReason, null);

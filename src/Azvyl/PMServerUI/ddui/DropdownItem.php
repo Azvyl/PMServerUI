@@ -14,9 +14,7 @@ declare(strict_types=1);
 
 namespace Azvyl\PMServerUI\ddui;
 
-/**
- * Dropdown data for use in CustomForm.
- */
+/** Dropdown data for use in CustomForm. */
 final class DropdownItem{
 	/**
 	 * @param string      $label The label of the dropdown item in the dropdown.

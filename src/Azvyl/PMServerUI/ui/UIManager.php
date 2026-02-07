@@ -31,9 +31,7 @@ use function strlen;
 use function trim;
 use function var_dump;
 
-/**
- * Manager responsible for opening and closing UI forms.
- */
+/** Manager responsible for opening and closing UI forms. */
 final class UIManager{
 
 	/** @var array<int, array<int, array{0:ServerUI,1:Promise}>> */
@@ -107,16 +105,12 @@ final class UIManager{
 		}, EventPriority::LOW, $plugin);
 	}
 
-	/**
-	 * Close all forms for a player.
-	 */
+	/** Close all forms for a player. */
 	public function closeAllForms(Player $player) : void{
 		throw new \RuntimeException("Not implemented yet");
 	}
 
-	/**
-	 * @internal
-	 */
+	/** @internal */
 	public function ___track(Player $player, int $formId, ServerUI $ui, Promise $promise) : void{
 		// Note: A vanilla client should only have one form open at a time
 		if(($this->playerForms[$player->getId()] ?? []) !== []){
@@ -125,9 +119,7 @@ final class UIManager{
 		$this->playerForms[$player->getId()][$formId] = [$ui, $promise];
 	}
 
-	/**
-	 * @internal
-	 */
+	/** @internal */
 	public function ___send(Player $player, ServerUI $ui) : Promise{
 		$promise = new Promise();
 		(function(UIManager $UIManager, ServerUI $ui, Promise $promise) : void{

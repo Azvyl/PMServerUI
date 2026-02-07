@@ -30,9 +30,7 @@ use function is_int;
 use function is_string;
 use function json_decode;
 
-/**
- * Builder for a customizable modal form.
- */
+/** Builder for a customizable modal form. */
 final class ModalFormData extends ServerUI{
 	private array|null|string $title = null;
 	private array|null|string $submit = null;
@@ -175,9 +173,7 @@ final class ModalFormData extends ServerUI{
 		return $this;
 	}
 
-	/**
-	 * @internal
-	 */
+	/** @internal */
 	public function toPacketFormData() : array{
 		$data = [
 			'type' => 'custom_form',
@@ -191,9 +187,7 @@ final class ModalFormData extends ServerUI{
 		return $data;
 	}
 
-	/**
-	 * @internal
-	 */
+	/** @internal */
 	public function processResponse(string $rawData = null, FormCancelationReason $cancelReason = null) : ModalFormResponse{
 		if($cancelReason !== null){
 			return new ModalFormResponse($cancelReason, null);

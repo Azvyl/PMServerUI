@@ -24,9 +24,7 @@ abstract class ServerUI{
 		return new static();
 	}
 
-	/**
-	 * Show the form to a player. Returns a Promise that resolves with a FormResponse.
-	 */
+	/** Show the form to a player. Returns a Promise that resolves with a FormResponse. */
 	final public function show(Player $player) : Promise{
 		return PMServerUI::getUIManager()->___send($player, $this);
 	}

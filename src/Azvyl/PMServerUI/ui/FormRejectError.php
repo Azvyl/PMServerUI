@@ -14,9 +14,7 @@ declare(strict_types=1);
 
 namespace Azvyl\PMServerUI\ui;
 
-/**
- * Error thrown when a form response is rejected for a reason.
- */
+/** Error thrown when a form response is rejected for a reason. */
 class FormRejectError extends \RuntimeException{
 	public function __construct(public FormRejectReason $reason, string $message = "Form rejected", ?\Throwable $previous = null){
 		parent::__construct($message, previous: $previous);
