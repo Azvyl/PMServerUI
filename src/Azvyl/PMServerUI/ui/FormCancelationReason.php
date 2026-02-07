@@ -12,10 +12,12 @@
 
 declare(strict_types=1);
 
-namespace Azvyl\PMServerUI;
+namespace Azvyl\PMServerUI\ui;
 
-enum FormRejectReason{
-	case MalformedResponse;
-	case PlayerQuit;
-	case ServerShutdown;
+/**
+ * Reasons why a form was canceled.
+ */
+enum FormCancelationReason: string{
+	case UserBusy = 'UserBusy';
+	case UserClosed = 'UserClosed';
 }

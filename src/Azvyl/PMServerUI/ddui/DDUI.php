@@ -12,9 +12,8 @@
 
 declare(strict_types=1);
 
-namespace Azvyl\PMServerUI;
+namespace Azvyl\PMServerUI\ddui;
 
-enum FormCancelationReason{
-	case UserClosed;
-	case UserBusy;
+abstract class DDUI{
+	protected function __construct(){ }
 }

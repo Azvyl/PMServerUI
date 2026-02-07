@@ -14,7 +14,7 @@ declare(strict_types=1);
 
 namespace Azvyl\PMServerUI;
 
-class Promise{
+final class Promise{
 	private mixed $result = null;
 	private ?\Throwable $error = null;
 	private bool $isResolved = false;
@@ -29,7 +29,7 @@ class Promise{
 		}
 	}
 
-	public function run(callable $executor): void{
+	public function run(callable $executor) : void{
 		try{
 			$executor(fn(mixed ...$value) => $this->resolve(...$value), fn(\Throwable $t) => $this->reject($t));
 		}catch(\Throwable $e){
@@ -37,7 +37,7 @@ class Promise{
 		}
 	}
 
-	public function resolve(mixed ...$value): void{
+	public function resolve(mixed ...$value) : void{
 		if($this->isResolved || $this->isRejected) return;
 
 		$this->isResolved = true;
@@ -50,7 +50,7 @@ class Promise{
 		$this->onFulfilledCallbacks = [];
 	}
 
-	public function reject(\Throwable $reason): void{
+	public function reject(\Throwable $reason) : void{
 		if($this->isResolved || $this->isRejected) return;
 
 		$this->isRejected = true;
@@ -63,8 +63,8 @@ class Promise{
 		$this->onRejectedCallbacks = [];
 	}
 
-	public function then(?callable $onFulfilled = null, ?callable $onRejected = null): Promise{
-		return new Promise(function($resolve, $reject) use ($onFulfilled, $onRejected){
+	public function then(?callable $onFulfilled = null, ?callable $onRejected = null) : Promise{
+		return new self(function($resolve, $reject) use ($onFulfilled, $onRejected){
 			$handleFulfilled = function(...$value) use ($onFulfilled, $resolve, $reject){
 				if($onFulfilled){
 					try{
@@ -102,7 +102,7 @@ class Promise{
 		});
 	}
 
-	public function catch(?callable $onRejected = null): Promise{
+	public function catch(?callable $onRejected = null) : Promise{
 		return $this->then(null, $onRejected);
 	}
 }

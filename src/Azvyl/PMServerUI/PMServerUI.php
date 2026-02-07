@@ -14,20 +14,20 @@ declare(strict_types=1);
 
 namespace Azvyl\PMServerUI;
 
+use Azvyl\PMServerUI\ui\UIManager;
 use pocketmine\plugin\Plugin;
 
 final class PMServerUI{
 
-	private function __construct(){}
+	private function __construct(){ }
 
 	private static ?Plugin $plugin = null;
 	private static \PrefixedLogger $logger;
 	private static UIManager $uiManager;
-	public static bool $tl = false;
 
-	public static function register(Plugin $plugin, bool $tl = false): void{
+	public static function register(Plugin $plugin) : void{
 		if(self::$plugin instanceof Plugin){
-			throw new \InvalidArgumentException("{$plugin->getName()} tries to register PMServerUI that has been registered by " . self::$plugin->getName());
+			return;
 		}
 
 		self::$plugin = $plugin;
@@ -35,7 +35,6 @@ final class PMServerUI{
 		self::$uiManager = new UIManager($plugin);
 
 		//TODO: make options easier to configure.
-		self::$tl = $tl;
 		//crash on unhandled error.
 		//kick player sending malformed response.
 		//validate response length before performing json_decode.
@@ -49,15 +48,15 @@ final class PMServerUI{
 		}
 	}
 
-	public static function getPlugin(): Plugin{
+	public static function getPlugin() : Plugin{
 		return self::$plugin ?? throw new \LogicException("PMServerUI has not been registered");
 	}
 
-	public static function getLogger(): \PrefixedLogger{
+	public static function getLogger() : \PrefixedLogger{
 		return self::$logger ?? throw new \LogicException("PMServerUI has not been registered");
 	}
 
-	public static function getUIManager(): UIManager{
+	public static function getUIManager() : UIManager{
 		return self::$uiManager ?? throw new \LogicException("PMServerUI has not been registered");
 	}
 }

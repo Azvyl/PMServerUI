@@ -12,16 +12,12 @@
 
 declare(strict_types=1);
 
-namespace Azvyl\PMServerUI;
+namespace Azvyl\PMServerUI\ui;
 
-/**
- * Base type for a form response.
- */
 readonly class FormResponse{
-
 	/**
 	 * @param FormCancelationReason|null $cancelationReason Contains additional details as to why a form was canceled.
-	 * @param bool $canceled If true, the form was canceled by the player (e.g., they selected the pop-up X close button).
+	 * @param bool                       $canceled If true, the form was canceled by the player (e.g., they selected the pop-up X close button).
 	 */
-	protected function __construct(public ?FormCancelationReason $cancelationReason, public bool $canceled){}
+	protected function __construct(public ?FormCancelationReason $cancelationReason, public bool $canceled){ }
 }
