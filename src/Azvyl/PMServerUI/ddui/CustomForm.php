@@ -28,7 +28,9 @@ final class CustomForm extends DDUI{
 	 * @param Observable<string>|string|UIRawMessage $title The title of the form.
 	 */
 	public static function create(Player $player, Observable|string|UIRawMessage $title) : self{
-		throw new \RuntimeException("Not implemented");
+		$instance = new self();
+		// TODO: to be implemented
+		return $instance;
 	}
 
 	/**
@@ -41,22 +43,19 @@ final class CustomForm extends DDUI{
 	 * @param bool|Observable<bool>                       $visible
 	 */
 	public function button(Observable|string|UIRawMessage $label, callable $onClick, bool|Observable $disabled = null, Observable|string|UIRawMessage $tooltip = null, bool|Observable $visible = null) : self{
-		throw new \RuntimeException("Not implemented");
-	}
-
-	/** Can this form be shown to the player right now? */
-	public function canShow() : bool{
-		throw new \RuntimeException("Not implemented");
+		// TODO: to be implemented
+		return $this;
 	}
 
 	/** Closes the form. Throws an error if the form is not open. */
 	public function close() : void{
-		throw new \RuntimeException("Not implemented");
+		// TODO: to be implemented
 	}
 
 	/** Adds a close "X" button to the form. */
 	public function closeButton() : self{
-		throw new \RuntimeException("Not implemented");
+		// TODO: to be implemented
+		return $this;
 	}
 
 	/**
@@ -65,7 +64,8 @@ final class CustomForm extends DDUI{
 	 * @param bool|Observable<bool> $visible Whether the divider is visible.
 	 */
 	public function divider(bool|Observable $visible = null) : self{
-		throw new \RuntimeException("Not implemented");
+		// TODO: to be implemented
+		return $this;
 	}
 
 	/**
@@ -80,7 +80,8 @@ final class CustomForm extends DDUI{
 	 * @param bool|Observable<bool>                       $visible
 	 */
 	public function dropdown(Observable|string|UIRawMessage $label, Observable $value, array $items, Observable|string|UIRawMessage $description = null, bool|Observable $disabled = null, bool|Observable $visible = null) : self{
-		throw new \RuntimeException("Not implemented");
+		// TODO: to be implemented
+		return $this;
 	}
 
 	/**
@@ -90,7 +91,25 @@ final class CustomForm extends DDUI{
 	 * @param bool|Observable<bool>                  $visible
 	 */
 	public function label(Observable|string|UIRawMessage $text, bool|Observable $visible = null) : self{
-		throw new \RuntimeException("Not implemented");
+		// TODO: to be implemented
+		return $this;
+	}
+
+	/**
+	 * Inserts a header (i.e. large-sized text) into the Custom form.
+	 *
+	 * @param Observable<string>|string|UIRawMessage $text The text to display in the header.
+	 * @param bool|Observable<bool>                  $visible Whether the header is visible.
+	 */
+	public function header(Observable|string|UIRawMessage $text, bool|Observable $visible = null) : self{
+		// TODO: to be implemented
+		return $this;
+	}
+
+	/** Returns true if the form is currently being shown to the player. */
+	public function isShowing() : bool{
+		// TODO: to be implemented
+		return false;
 	}
 
 	/**
@@ -98,7 +117,9 @@ final class CustomForm extends DDUI{
 	 * is showing a form.
 	 */
 	public function show() : Promise{
-		throw new \RuntimeException("Not implemented");
+		$promise = new Promise();
+		// TODO: to be implemented
+		return $promise;
 	}
 
 	/**
@@ -114,7 +135,8 @@ final class CustomForm extends DDUI{
 	 * @param bool|Observable<bool>|null                  $visible
 	 */
 	public function slider(Observable|string|UIRawMessage $label, Observable $value, int|float $minValue, int|float $maxValue, Observable|string|UIRawMessage $description = null, bool|Observable $disabled = null, int|float|Observable $step = null, bool|Observable $visible = null) : self{
-		throw new \RuntimeException("Not implemented");
+		// TODO: to be implemented
+		return $this;
 	}
 
 	/**
@@ -123,7 +145,8 @@ final class CustomForm extends DDUI{
 	 * @param bool|Observable<bool>|null $visible Whether the spacer is visible.
 	 */
 	public function spacer(bool|Observable $visible = null) : self{
-		throw new \RuntimeException("Not implemented");
+		// TODO: to be implemented
+		return $this;
 	}
 
 	/**
@@ -136,7 +159,8 @@ final class CustomForm extends DDUI{
 	 * @param bool|Observable<bool>|null                  $visible
 	 */
 	public function textField(Observable|string|UIRawMessage $label, Observable $text, Observable|string|UIRawMessage $description = null, bool|Observable $disabled = null, bool|Observable $visible = null) : self{
-		throw new \RuntimeException("Not implemented");
+		// TODO: to be implemented
+		return $this;
 	}
 
 	/**
@@ -149,6 +173,7 @@ final class CustomForm extends DDUI{
 	 * @param bool|Observable<bool>|null                  $visible
 	 */
 	public function toggle(Observable|string|UIRawMessage $label, Observable $toggled, Observable|string|UIRawMessage $description = null, bool|Observable $disabled = null, bool|Observable $visible = null) : self{
-		throw new \RuntimeException("Not implemented");
+		// TODO: to be implemented
+		return $this;
 	}
 }

@@ -18,7 +18,7 @@ use Azvyl\PMServerUI\UIRawMessage;
 use pocketmine\form\FormValidationException;
 
 /** Builder for a simple message form with two buttons. */
-final class MessageFormData extends ServerUI{
+class MessageFormData extends ServerUI{
 	private array|null|string $title = null;
 	private array|null|string $body = null;
 	private array|null|string $button1 = null;

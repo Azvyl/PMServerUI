@@ -19,7 +19,7 @@ use pocketmine\form\FormValidationException;
 use function is_numeric;
 
 /** Builder for a simple action form with a list of buttons. */
-final class ActionFormData extends ServerUI{
+class ActionFormData extends ServerUI{
 	private array|null|string $title = null;
 	private array|null|string $body = null;
 	private array $elements = [];

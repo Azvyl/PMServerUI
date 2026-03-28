@@ -22,8 +22,10 @@ use pocketmine\player\Player;
 final class MessageBox extends DDUI{
 
 	/** Creates a message form for a certain player. */
-	public static function create(Player $player) : self{
-		throw new \RuntimeException("Not implemented");
+	public static function create(Player $player, Observable|string|UIRawMessage $title) : self{
+		$instance = new self();
+		// TODO: to be implemented
+		return $instance;
 	}
 
 	/**
@@ -32,7 +34,8 @@ final class MessageBox extends DDUI{
 	 * @param Observable<string>|string|UIRawMessage $text
 	 */
 	public function body(Observable|string|UIRawMessage $text) : self{
-		throw new \RuntimeException("Not implemented");
+		// TODO: to be implemented
+		return $this;
 	}
 
 	/**
@@ -42,7 +45,8 @@ final class MessageBox extends DDUI{
 	 * @param Observable<string>|string|UIRawMessage|null $tooltip
 	 */
 	public function button1(Observable|string|UIRawMessage $label, Observable|string|UIRawMessage $tooltip = null) : self{
-		throw new \RuntimeException("Not implemented");
+		// TODO: to be implemented
+		return $this;
 	}
 
 	/**
@@ -52,17 +56,26 @@ final class MessageBox extends DDUI{
 	 * @param Observable<string>|string|UIRawMessage|null $tooltip
 	 */
 	public function button2(Observable|string|UIRawMessage $label, Observable|string|UIRawMessage $tooltip = null) : self{
-		throw new \RuntimeException("Not implemented");
+		// TODO: to be implemented
+		return $this;
 	}
 
 	/** Closes the form. Will throw an error if the form is not open. */
 	public function close() : void{
-		throw new \RuntimeException("Not implemented");
+		// TODO: to be implemented
+	}
+
+	/** Returns true if the message box is currently being shown to the player. */
+	public function isShowing() : bool{
+		// TODO: to be implemented
+		return false;
 	}
 
 	/** Show this modal to the player. Will throw an error if the modal is already showing. */
-	public function show(Player $player) : Promise{
-		throw new \RuntimeException("Not implemented");
+	public function show() : Promise{
+		$promise = new Promise();
+		//TODO: to be implemented
+		return $promise;
 	}
 
 	/**
@@ -71,6 +84,7 @@ final class MessageBox extends DDUI{
 	 * @param Observable<string>|string|UIRawMessage $text
 	 */
 	public function title(Observable|string|UIRawMessage $text) : self{
-		throw new \RuntimeException("Not implemented");
+		// TODO: to be implemented
+		return $this;
 	}
 }

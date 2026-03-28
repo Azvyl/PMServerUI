@@ -31,7 +31,7 @@ use function is_string;
 use function json_decode;
 
 /** Builder for a customizable modal form. */
-final class ModalFormData extends ServerUI{
+class ModalFormData extends ServerUI{
 	private array|null|string $title = null;
 	private array|null|string $submit = null;
 	/** @var array<int, array<string, mixed>> */
@@ -53,14 +53,14 @@ final class ModalFormData extends ServerUI{
 	/**
 	 * @param string[]|UIRawMessage[] $items
 	 */
-	public function dropdown(string|UIRawMessage $label, array $items, int $defaultValueIndex = null, string|UIRawMessage $tooltip = null) : self{
+	public function dropdown(string|UIRawMessage $label, array $items, int $defaultIndex = null, string|UIRawMessage $tooltip = null) : self{
 		$dropdownElement = [
 			'type' => 'dropdown',
 			'text' => $label instanceof UIRawMessage ? $label->encode() : $label,
 			'options' => array_map(fn(string|UIRawMessage $item) => $item instanceof UIRawMessage ? $item->encode() : $item, $items)
 		];
-		if($defaultValueIndex !== null){
-			$dropdownElement['default'] = $defaultValueIndex;
+		if($defaultIndex !== null){
+			$dropdownElement['default'] = $defaultIndex;
 		}
 		if($tooltip !== null){
 			$dropdownElement['tooltip'] = $tooltip instanceof UIRawMessage ? $tooltip->encode() : $tooltip;
@@ -93,29 +93,29 @@ final class ModalFormData extends ServerUI{
 		return $this;
 	}
 
-	public function slider(string|UIRawMessage $label, int $minValue, int $maxValue, int $defaultValue = null, string|UIRawMessage $tooltip = null, int $valueStep = null) : self{
+	public function slider(string|UIRawMessage $label, int $min, int $max, int $default = null, string|UIRawMessage $tooltip = null, int $step = null) : self{
 		$sliderElement = [
 			'type' => 'slider',
 			'text' => $label instanceof UIRawMessage ? $label->encode() : $label,
-			'min' => (float) $minValue,
-			'max' => (float) $maxValue,
-			'step' => (float) ($valueStep ?? 1.0),
+			'min' => (float) $min,
+			'max' => (float) $max,
+			'step' => (float) ($step ?? 1.0),
 			'timeout' => 100.0,//TODO: Find out what this does (1.26.0.29)
 		];
-		if($defaultValue !== null){
-			$sliderElement['default'] = $defaultValue;
+		if($default !== null){
+			$sliderElement['default'] = $default;
 		}
 		if($tooltip !== null){
 			$sliderElement['tooltip'] = $tooltip instanceof UIRawMessage ? $tooltip->encode() : $tooltip;
 		}
 		$this->controls[] = $sliderElement;
-		$this->validators[] = static function($value) use ($minValue, $maxValue) : float{
+		$this->validators[] = static function($value) use ($min, $max) : float{
 			if(!is_int($value) && !is_float($value)){
 				throw new FormValidationException("Expected numeric value for slider response, got " . gettype($value));
 			}
 			$numeric = (float) $value;
-			if($numeric < $minValue || $numeric > $maxValue){
-				throw new FormValidationException("Slider response out of range ($minValue..$maxValue), got $numeric");
+			if($numeric < $min || $numeric > $max){
+				throw new FormValidationException("Slider response out of range ($min..$max), got $numeric");
 			}
 			return $numeric;
 		};
@@ -128,14 +128,14 @@ final class ModalFormData extends ServerUI{
 		return $this;
 	}
 
-	public function textField(string|UIRawMessage $label, string|UIRawMessage $placeholderText, string|UIRawMessage $defaultValue = null, string|UIRawMessage $tooltip = null) : self{
+	public function textField(string|UIRawMessage $label, string|UIRawMessage $placeholderText = null, string|UIRawMessage $default = null, string|UIRawMessage $tooltip = null) : self{
 		$textFieldElement = [
 			'type' => 'input',
 			'text' => $label instanceof UIRawMessage ? $label->encode() : $label,
-			'placeholder' => $placeholderText instanceof UIRawMessage ? $placeholderText->encode() : $placeholderText,
+			'placeholder' => $placeholderText instanceof UIRawMessage ? $placeholderText->encode() : $placeholderText ?? "",
 		];
-		if($defaultValue !== null){
-			$textFieldElement['default'] = $defaultValue instanceof UIRawMessage ? $defaultValue->encode() : $defaultValue;
+		if($default !== null){
+			$textFieldElement['default'] = $default instanceof UIRawMessage ? $default->encode() : $default;
 		}
 		if($tooltip !== null){
 			$textFieldElement['tooltip'] = $tooltip instanceof UIRawMessage ? $tooltip->encode() : $tooltip;
@@ -151,13 +151,13 @@ final class ModalFormData extends ServerUI{
 		return $this;
 	}
 
-	public function toggle(string|UIRawMessage $label, bool $defaultValue = null, string|UIRawMessage $tooltip = null) : self{
+	public function toggle(string|UIRawMessage $label, bool $default = null, string|UIRawMessage $tooltip = null) : self{
 		$toggleElement = [
 			'type' => 'toggle',
 			'text' => $label instanceof UIRawMessage ? $label->encode() : $label,
 		];
-		if($defaultValue !== null){
-			$toggleElement['default'] = $defaultValue;
+		if($default !== null){
+			$toggleElement['default'] = $default;
 		}
 		if($tooltip !== null){
 			$toggleElement['tooltip'] = $tooltip instanceof UIRawMessage ? $tooltip->encode() : $tooltip;
