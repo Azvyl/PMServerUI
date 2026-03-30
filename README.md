@@ -42,7 +42,7 @@ library that other plugins *include* in their code.
   {
     "require": {
       // other dependencies ...
-      "azvyl/pmserver-ui": "^1.0"
+      "azvyl/pmserver-ui": "^2.0"
     }
   }
   ```
@@ -57,7 +57,7 @@ library that other plugins *include* in their code.
      YourPlugin:
        libs:
          - src: Azvyl/PMServerUI/PMServerUI
-           version: ^1.0.2
+           version: ^2.0.0
    ```
 
 ---

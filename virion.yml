@@ -1,5 +1,5 @@
 name: PMServerUI
-version: 1.0.2
+version: 2.0.0
 antigen: Azvyl\PMServerUI
 api: 5.0.0
 authors: [Azvyl]
