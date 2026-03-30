@@ -21,7 +21,7 @@ use function array_map;
 final class UIRawMessage{
 
 	/**
-	 * @param UIRawMessage[]        $rawtext
+	 * @param UIRawMessage[] $rawtext
 	 * @param string[]|UIRawMessage $with
 	 */
 	public function __construct(public ?array $rawtext = null, public ?string $text = null, public ?string $translate = null, public null|array|UIRawMessage $with = null){
@@ -33,6 +33,7 @@ final class UIRawMessage{
 		}
 	}
 
+	/** Encodes this value into the Bedrock RawMessage payload format for network packets. */
 	public function encode() : array{
 		$entries = [];
 
@@ -41,10 +42,15 @@ final class UIRawMessage{
 
 			if($this->with !== null){
 				if($this->with instanceof UIRawMessage){
-					$encoded = $this->with->encode();
-					$entry["with"] = $encoded["rawtext"] ?? [];
+					$entry["with"] = $this->with->encode();
 				}elseif(is_array($this->with)){
-					$entry["with"] = array_map(fn(string $s) => ["text" => $s], $this->with);
+					$entry["with"] = ["rawtext" => array_map(function($v){
+						if($v instanceof UIRawMessage){
+							$enc = $v->encode();
+							return $enc["rawtext"][0] ?? [];
+						}
+						return ["text" => (string)$v];
+					}, $this->with)];
 				}
 			}
 
@@ -56,8 +62,14 @@ final class UIRawMessage{
 		}
 
 		if($this->rawtext !== null){
-			// Todo: Verify if this is correct
-			$entries[] = ["rawtext" => array_map(fn(UIRawMessage $child) => $child->encode(), $this->rawtext)];
+			foreach($this->rawtext as $child){
+				if(!($child instanceof UIRawMessage)) continue;
+				$childEnc = $child->encode();
+				$childEntries = $childEnc["rawtext"] ?? [];
+				foreach($childEntries as $ce){
+					$entries[] = $ce;
+				}
+			}
 		}
 
 		return ["rawtext" => $entries];

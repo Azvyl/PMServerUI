@@ -29,12 +29,11 @@ use pocketmine\Server;
 use function json_encode;
 use function strlen;
 use function trim;
-use function var_dump;
 
 /** Manager responsible for opening and closing UI forms. */
 final class UIManager{
 
-	/** @var array<int, array<int, array{0:ServerUI,1:Promise}>> */
+	/** @var array<int, array<int, array{0:ServerUI,1:Promise<FormResponse>}>> */
 	private array $playerForms = [];
 
 	public function __construct(Plugin $plugin){
@@ -75,7 +74,6 @@ final class UIManager{
 								throw new FormValidationException("Player {$player->getName()} sent unknown cancel reason");
 							}
 						}elseif($packet->formData !== null){
-							var_dump($packet->formData);
 							$maxFormResponseSize = 10 * 1024;
 							if(strlen($packet->formData) > $maxFormResponseSize){
 								throw new PacketHandlingException("Form response data too large, refusing to decode (received" . strlen($packet->formData) . " bytes, max $maxFormResponseSize bytes)");
@@ -110,7 +108,10 @@ final class UIManager{
 		throw new \RuntimeException("Not implemented yet");
 	}
 
-	/** @internal */
+	/**
+	 * @internal
+	 * @param Promise<FormResponse> $promise
+	 */
 	public function ___track(Player $player, int $formId, ServerUI $ui, Promise $promise) : void{
 		// Note: A vanilla client should only have one form open at a time
 		if(($this->playerForms[$player->getId()] ?? []) !== []){
@@ -119,8 +120,12 @@ final class UIManager{
 		$this->playerForms[$player->getId()][$formId] = [$ui, $promise];
 	}
 
-	/** @internal */
+	/**
+	 * @internal
+	 * @return Promise<FormResponse>
+	 */
 	public function ___send(Player $player, ServerUI $ui) : Promise{
+		/** @var Promise<FormResponse> $promise */
 		$promise = new Promise();
 		(function(UIManager $UIManager, ServerUI $ui, Promise $promise) : void{
 			/** @noinspection PhpUndefinedFieldInspection */

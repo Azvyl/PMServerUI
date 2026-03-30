@@ -20,7 +20,7 @@ use pocketmine\plugin\Plugin;
 
 final class PMServerUI{
 
-	private function __construct(){ }
+	private function __construct(){}
 
 	private static ?Plugin $plugin = null;
 	private static \PrefixedLogger $logger;

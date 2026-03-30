@@ -1,15 +1,5 @@
 <?php
 
-/*
- * PMServerUI
- * https://github.com/Azvyl/PMServerUI
- *
- * Copyright (c) 2026 Azvyl
- *
- * Licensed under the MIT License.
- * See LICENSE file in the project root for details.
- */
-
 declare(strict_types=1);
 
 namespace Azvyl\PMServerUI\ddui;
@@ -31,7 +21,7 @@ final class MessageBox extends DDUI{
 	/**
 	 * Sets the body text of the message box.
 	 *
-	 * @param Observable<string>|string|UIRawMessage $text
+	 * @param Observable<string>|Observable<UIRawMessage>|string|UIRawMessage $text
 	 */
 	public function body(Observable|string|UIRawMessage $text) : self{
 		// TODO: to be implemented
@@ -41,8 +31,8 @@ final class MessageBox extends DDUI{
 	/**
 	 * Sets the data for the top button in the form.
 	 *
-	 * @param Observable<string>|string|UIRawMessage      $label
-	 * @param Observable<string>|string|UIRawMessage|null $tooltip
+	 * @param Observable<string>|Observable<UIRawMessage>|string|UIRawMessage $label
+	 * @param Observable<string>|Observable<UIRawMessage>|string|UIRawMessage|null $tooltip
 	 */
 	public function button1(Observable|string|UIRawMessage $label, Observable|string|UIRawMessage $tooltip = null) : self{
 		// TODO: to be implemented
@@ -52,8 +42,8 @@ final class MessageBox extends DDUI{
 	/**
 	 * Sets the data for the bottom button in the form.
 	 *
-	 * @param Observable<string>|string|UIRawMessage      $label
-	 * @param Observable<string>|string|UIRawMessage|null $tooltip
+	 * @param Observable<string>|Observable<UIRawMessage>|string|UIRawMessage $label
+	 * @param Observable<string>|Observable<UIRawMessage>|string|UIRawMessage|null $tooltip
 	 */
 	public function button2(Observable|string|UIRawMessage $label, Observable|string|UIRawMessage $tooltip = null) : self{
 		// TODO: to be implemented
@@ -71,8 +61,13 @@ final class MessageBox extends DDUI{
 		return false;
 	}
 
-	/** Show this modal to the player. Will throw an error if the modal is already showing. */
+	/**
+	 * Show this modal to the player. Will throw an error if the modal is already showing.
+	 *
+	 * @return Promise<mixed>
+	 */
 	public function show() : Promise{
+		/** @var Promise<mixed> $promise */
 		$promise = new Promise();
 		//TODO: to be implemented
 		return $promise;
@@ -81,7 +76,7 @@ final class MessageBox extends DDUI{
 	/**
 	 * Sets the title of the form.
 	 *
-	 * @param Observable<string>|string|UIRawMessage $text
+	 * @param Observable<string>|Observable<UIRawMessage>|string|UIRawMessage $text
 	 */
 	public function title(Observable|string|UIRawMessage $text) : self{
 		// TODO: to be implemented

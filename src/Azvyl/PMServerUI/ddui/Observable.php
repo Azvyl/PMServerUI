@@ -1,51 +1,45 @@
 <?php
 
-/*
- * PMServerUI
- * https://github.com/Azvyl/PMServerUI
- *
- * Copyright (c) 2026 Azvyl
- *
- * Licensed under the MIT License.
- * See LICENSE file in the project root for details.
- */
-
 declare(strict_types=1);
 
 namespace Azvyl\PMServerUI\ddui;
 
+use Azvyl\PMServerUI\PMServerUI;
+use Azvyl\PMServerUI\UIRawMessage;
+
 /**
  * A class that represents data that can be Observed.
  *
- * @template T of string|int|float|bool
+ * @template T of string|int|float|bool|UIRawMessage
  */
 final class Observable{
 	/** @var array<int, callable> */
 	private array $listeners = [];
 
 	/**
-	 * @param T    $data
+	 * @param T $data
 	 * @param bool $clientWritable
 	 */
-	private function __construct(private bool|float|int|string $data, private readonly bool $clientWritable = false){ }
+	private function __construct(private bool|float|int|string|UIRawMessage $data, private readonly bool $clientWritable = false){}
 
 	/**
 	 * Create an observable.
 	 *
-	 * @param T    $data
+	 * @param T $data
 	 * @param bool $clientWritable
 	 *
 	 * @return Observable<T>
 	 */
-	public static function create(bool|float|int|string $data, bool $clientWritable = false) : self{
+	public static function create(bool|float|int|string|UIRawMessage $data, bool $clientWritable = false) : self{
 		return new self($data, $clientWritable);
 	}
 
 	/**
 	 * Get the data.
+	 *
 	 * @return T
 	 */
-	public function getData() : bool|float|int|string{
+	public function getData() : bool|float|int|string|UIRawMessage{
 		return $this->data;
 	}
 
@@ -54,7 +48,31 @@ final class Observable{
 	 *
 	 * @param T $data
 	 */
-	public function setData(bool|float|int|string $data) : void{
+	public function setData(bool|float|int|string|UIRawMessage $data) : void{
+		$this->data = $data;
+		foreach($this->listeners as $listener){
+			try{
+				$listener($data);
+			}catch(\Throwable $t){
+				PMServerUI::getLogger()->logException($t);
+			}
+		}
+
+		try{
+			PMServerUI::getDDUIManager()->notifyObservableChanged($this);
+		}catch(\Throwable $e){
+			PMServerUI::getLogger()->logException($e);
+		}
+	}
+
+	/**
+	 * @internal
+	 * Apply a value received from the client. This updates the observable and notifies listeners
+	 * but DOES NOT echo the value back to the client (to avoid feedback loops).
+	 *
+	 * @param T $data
+	 */
+	public function applyClientUpdate(bool|float|int|string|UIRawMessage $data) : void{
 		$this->data = $data;
 		foreach($this->listeners as $listener){
 			$listener($data);

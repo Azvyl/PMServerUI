@@ -97,9 +97,9 @@ class ModalFormData extends ServerUI{
 		$sliderElement = [
 			'type' => 'slider',
 			'text' => $label instanceof UIRawMessage ? $label->encode() : $label,
-			'min' => (float) $min,
-			'max' => (float) $max,
-			'step' => (float) ($step ?? 1.0),
+			'min' => (float)$min,
+			'max' => (float)$max,
+			'step' => (float)($step ?? 1.0),
 			'timeout' => 100.0,//TODO: Find out what this does (1.26.0.29)
 		];
 		if($default !== null){
@@ -113,7 +113,7 @@ class ModalFormData extends ServerUI{
 			if(!is_int($value) && !is_float($value)){
 				throw new FormValidationException("Expected numeric value for slider response, got " . gettype($value));
 			}
-			$numeric = (float) $value;
+			$numeric = (float)$value;
 			if($numeric < $min || $numeric > $max){
 				throw new FormValidationException("Slider response out of range ($min..$max), got $numeric");
 			}

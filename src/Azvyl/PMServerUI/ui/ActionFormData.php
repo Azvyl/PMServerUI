@@ -82,7 +82,7 @@ class ActionFormData extends ServerUI{
 			if(!is_numeric($rawData)){
 				throw new FormValidationException("Expected int, got $rawData");
 			}
-			$data = (int) $rawData;
+			$data = (int)$rawData;
 			if($data < 0 || $data >= $this->buttonCount){
 				throw new FormValidationException("Button $data does not exist");
 			}
