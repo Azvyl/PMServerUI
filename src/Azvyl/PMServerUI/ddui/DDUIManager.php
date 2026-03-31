@@ -107,6 +107,9 @@ final class DDUIManager{
 				$this->handleServerboundScreenClosed($event, $player, $packet);
 			}
 		}, EventPriority::LOW, $plugin);
+
+		// Test whether it works if more than 1 plugin uses the PMServerUI virion or another plugin implements its own DDUI packet sending
+		// TODO: sync form id with DataPacketSendEvent?
 	}
 
 	public function hasActiveForm(string $playerUuid) : bool{
@@ -335,7 +338,7 @@ final class DDUIManager{
 				new ClientboundDataStoreChange("minecraft", "custom_form_data", $updateCount, new NoneDataStorePropertyValue()),
 			]);
 
-			$formId = $this->getScreenClosedFormId($packet);
+			$formId = $packet->getFormId();
 			if(isset($this->formPromises[$playerUuid][$formId])){
 				$this->formPromises[$playerUuid][$formId]->resolve(true);
 				unset($this->formPromises[$playerUuid][$formId]);
@@ -358,14 +361,6 @@ final class DDUIManager{
 		}catch(\Throwable $t){
 			PMServerUI::getLogger()->logException($t);
 		}
-	}
-
-	private function getScreenClosedFormId(ServerboundDataDrivenScreenClosedPacket $packet) : int{
-		if(method_exists($packet, 'getFormId')){
-			/** @var int */
-			return $packet->getFormId();
-		}
-		return (new \ReflectionProperty($packet, 'formId'))->getValue($packet);
 	}
 
 	private function clearPlayerState(string $playerUuid, string $reason) : void{

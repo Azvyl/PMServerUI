@@ -114,7 +114,7 @@ final class CustomForm extends DDUI{
 	 * @param bool|Observable<bool> $disabled
 	 * @param bool|Observable<bool> $visible
 	 */
-	public function dropdown(Observable|string|UIRawMessage $label, Observable $value, array $items, Observable|string|UIRawMessage $description = null, bool|Observable $disabled = null, bool|Observable $visible = null) : self{
+	public function dropdown(Observable|string|UIRawMessage $label, Observable $value, array $items, Observable|string|UIRawMessage $description = null, bool|Observable $disabled = null, bool|Observable $visible = null) : self{ // TODO: verify if $description can be Observable<UIRawMessage>
 		$this->elements[] = new DropdownElement($label, $value, $items, $description, $disabled, $visible);
 		return $this;
 	}
@@ -143,18 +143,18 @@ final class CustomForm extends DDUI{
 
 	/** Returns true if this CustomForm has been shown and not yet acknowledged/closed. */
 	public function isShowing() : bool{
-		return $this->showing ?? false;
+		return $this->showing;
 	}
 
 	/**
-	 * Shows the form to the player. Will throw errors if the form is currently being shown or if another behavior pack
-	 * is showing a form.
+	 * Shows the form to the player. Will return false if the client was busy (i.e. in another menu or this one is open).
+	 * Will throw if the user disconnects.
 	 *
 	 * @return Promise<bool>
 	 */
-	public function show() : Promise{
+	public function show() : Promise{ // TODO: return Promise<DataDrivenScreenClosedReason>
 		/** @var Promise<bool> $promise */
-		$promise = new Promise();
+		$promise = new Promise(); // TODO: reject instead off throwing exception
 		if($this->showing){
 			throw new \RuntimeException("Form is already open");
 		}

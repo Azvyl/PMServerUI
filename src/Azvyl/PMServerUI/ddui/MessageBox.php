@@ -62,24 +62,15 @@ final class MessageBox extends DDUI{
 	}
 
 	/**
-	 * Show this modal to the player. Will throw an error if the modal is already showing.
+	 * Show this message box to the player. Will return a result even if the client was busy (i.e. in another menu).
+	 * Will throw if the user disconnects.
 	 *
-	 * @return Promise<mixed>
+	 * @return Promise<MessageBoxResult>
 	 */
 	public function show() : Promise{
-		/** @var Promise<mixed> $promise */
+		/** @var Promise<MessageBoxResult> $promise */
 		$promise = new Promise();
 		//TODO: to be implemented
 		return $promise;
-	}
-
-	/**
-	 * Sets the title of the form.
-	 *
-	 * @param Observable<string>|Observable<UIRawMessage>|string|UIRawMessage $text
-	 */
-	public function title(Observable|string|UIRawMessage $text) : self{
-		// TODO: to be implemented
-		return $this;
 	}
 }

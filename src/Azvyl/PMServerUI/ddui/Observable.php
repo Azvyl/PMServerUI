@@ -16,6 +16,8 @@ final class Observable{
 	/** @var array<int, callable> */
 	private array $listeners = [];
 
+	private int $nextListenerId = 1;
+
 	/**
 	 * @param T $data
 	 * @param bool $clientWritable
@@ -43,12 +45,17 @@ final class Observable{
 		return $this->data;
 	}
 
+	// TODO: getFilteredText()
+
 	/**
 	 * Set the data and notify subscribers.
 	 *
 	 * @param T $data
 	 */
 	public function setData(bool|float|int|string|UIRawMessage $data) : void{
+		if($data === $this->data){
+			return;
+		}
 		$this->data = $data;
 		foreach($this->listeners as $listener){
 			try{
@@ -87,7 +94,7 @@ final class Observable{
 	 * @return Subscription
 	 */
 	public function subscribe(callable $listener) : Subscription{
-		$id = count($this->listeners) + 1;
+		$id = $this->nextListenerId++;
 		$this->listeners[$id] = $listener;
 		return new Subscription(function() use ($id) : void{
 			unset($this->listeners[$id]);
