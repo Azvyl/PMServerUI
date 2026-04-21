@@ -64,7 +64,7 @@ final class CustomForm extends DDUI{
 	 * @param Observable<string>|Observable<UIRawMessage>|string|UIRawMessage|null $tooltip The tooltip to display when hovering over the button.
 	 * @param bool|Observable<bool> $visible
 	 */
-	public function button(Observable|string|UIRawMessage $label, callable $onClick, bool|Observable $disabled = null, Observable|string|UIRawMessage $tooltip = null, bool|Observable $visible = null) : self{
+	public function button(Observable|string|UIRawMessage $label, callable $onClick, bool|Observable|null $disabled = null, Observable|string|UIRawMessage|null $tooltip = null, bool|Observable|null $visible = null) : self{
 		$this->elements[] = new ButtonElement($label, $onClick, $disabled, $tooltip, $visible);
 		return $this;
 	}
@@ -98,7 +98,7 @@ final class CustomForm extends DDUI{
 	 *
 	 * @param bool|Observable<bool> $visible Whether the divider is visible.
 	 */
-	public function divider(bool|Observable $visible = null) : self{
+	public function divider(bool|Observable|null $visible = null) : self{
 		$this->elements[] = new DividerElement($visible);
 		return $this;
 	}
@@ -114,7 +114,7 @@ final class CustomForm extends DDUI{
 	 * @param bool|Observable<bool> $disabled
 	 * @param bool|Observable<bool> $visible
 	 */
-	public function dropdown(Observable|string|UIRawMessage $label, Observable $value, array $items, Observable|string|UIRawMessage $description = null, bool|Observable $disabled = null, bool|Observable $visible = null) : self{ // TODO: verify if $description can be Observable<UIRawMessage>
+	public function dropdown(Observable|string|UIRawMessage $label, Observable $value, array $items, Observable|string|UIRawMessage|null $description = null, bool|Observable|null $disabled = null, bool|Observable|null $visible = null) : self{ // TODO: verify if $description can be Observable<UIRawMessage>
 		$this->elements[] = new DropdownElement($label, $value, $items, $description, $disabled, $visible);
 		return $this;
 	}
@@ -125,7 +125,7 @@ final class CustomForm extends DDUI{
 	 * @param Observable<string>|Observable<UIRawMessage>|string|UIRawMessage $text The text to display in the label.
 	 * @param bool|Observable<bool> $visible
 	 */
-	public function label(Observable|string|UIRawMessage $text, bool|Observable $visible = null) : self{
+	public function label(Observable|string|UIRawMessage $text, bool|Observable|null $visible = null) : self{
 		$this->elements[] = new LabelElement($text, $visible);
 		return $this;
 	}
@@ -136,7 +136,7 @@ final class CustomForm extends DDUI{
 	 * @param Observable<string>|Observable<UIRawMessage>|string|UIRawMessage $text The text to display in the header.
 	 * @param bool|Observable<bool> $visible Whether the header is visible.
 	 */
-	public function header(Observable|string|UIRawMessage $text, bool|Observable $visible = null) : self{
+	public function header(Observable|string|UIRawMessage $text, bool|Observable|null $visible = null) : self{
 		$this->elements[] = new HeaderElement($text, $visible);
 		return $this;
 	}
@@ -199,7 +199,7 @@ final class CustomForm extends DDUI{
 	 * @param Observable<int>|Observable<float>|int|float|null $step The step size (increment) for the slider.
 	 * @param bool|Observable<bool>|null $visible
 	 */
-	public function slider(Observable|string|UIRawMessage $label, Observable $value, int|float|Observable $minValue, int|float|Observable $maxValue, Observable|string|UIRawMessage $description = null, bool|Observable $disabled = null, int|float|Observable $step = null, bool|Observable $visible = null) : self{
+	public function slider(Observable|string|UIRawMessage $label, Observable $value, int|float|Observable $minValue, int|float|Observable $maxValue, Observable|string|UIRawMessage|null $description = null, bool|Observable|null $disabled = null, int|float|Observable|null $step = null, bool|Observable|null $visible = null) : self{
 		$this->elements[] = new SliderElement($label, $value, $minValue, $maxValue, $description, $disabled, $step, $visible);
 		return $this;
 	}
@@ -209,7 +209,7 @@ final class CustomForm extends DDUI{
 	 *
 	 * @param bool|Observable<bool>|null $visible Whether the spacer is visible.
 	 */
-	public function spacer(bool|Observable $visible = null) : self{
+	public function spacer(bool|Observable|null $visible = null) : self{
 		$this->elements[] = new SpacerElement($visible);
 		return $this;
 	}
@@ -223,7 +223,7 @@ final class CustomForm extends DDUI{
 	 * @param bool|Observable<bool>|null $disabled
 	 * @param bool|Observable<bool>|null $visible
 	 */
-	public function textField(Observable|string|UIRawMessage $label, Observable $text, Observable|string|UIRawMessage $description = null, bool|Observable $disabled = null, bool|Observable $visible = null) : self{
+	public function textField(Observable|string|UIRawMessage $label, Observable $text, Observable|string|UIRawMessage|null $description = null, bool|Observable|null $disabled = null, bool|Observable|null $visible = null) : self{
 		$this->elements[] = new TextFieldElement($label, $text, $description, $disabled, $visible);
 		return $this;
 	}
@@ -237,7 +237,7 @@ final class CustomForm extends DDUI{
 	 * @param bool|Observable<bool>|null $disabled
 	 * @param bool|Observable<bool>|null $visible
 	 */
-	public function toggle(Observable|string|UIRawMessage $label, Observable $toggled, Observable|string|UIRawMessage $description = null, bool|Observable $disabled = null, bool|Observable $visible = null) : self{
+	public function toggle(Observable|string|UIRawMessage $label, Observable $toggled, Observable|string|UIRawMessage|null $description = null, bool|Observable|null $disabled = null, bool|Observable|null $visible = null) : self{
 		$this->elements[] = new ToggleElement($label, $toggled, $description, $disabled, $visible);
 		return $this;
 	}
