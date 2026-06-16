@@ -56,7 +56,7 @@ final class Observable{
 		if($data === $this->data){
 			return;
 		}
-		$this->data = $data;
+		$this->data = $data; // TODO: verify type
 		foreach($this->listeners as $listener){
 			try{
 				$listener($data);

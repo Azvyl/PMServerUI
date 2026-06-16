@@ -27,4 +27,3 @@ final readonly class LabelElement implements CustomFormElement{
 		];
 	}
 }
-

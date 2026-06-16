@@ -36,4 +36,3 @@ final readonly class ToggleElement implements CustomFormElement{
 		];
 	}
 }
-

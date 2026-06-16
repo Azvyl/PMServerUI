@@ -12,4 +12,3 @@ final class DataStorePropertyType{
 	public const LIST = 5;
 	public const MAP = 6;
 }
-

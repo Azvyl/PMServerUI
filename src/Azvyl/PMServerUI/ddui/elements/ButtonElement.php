@@ -49,4 +49,3 @@ final class ButtonElement implements CustomFormElement{
 		];
 	}
 }
-

@@ -14,4 +14,3 @@ interface CustomFormElement{
 	 */
 	public function buildEntries(CustomFormRenderContext $context, int $index) : array;
 }
-

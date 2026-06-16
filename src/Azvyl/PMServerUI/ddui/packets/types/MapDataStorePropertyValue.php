@@ -43,4 +43,3 @@ final class MapDataStorePropertyValue extends DataStorePropertyValue{
 		return new self($entries);
 	}
 }
-

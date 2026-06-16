@@ -18,4 +18,3 @@ final class NoneDataStorePropertyValue extends DataStorePropertyValue{
 		return new self();
 	}
 }
-

@@ -27,4 +27,3 @@ final class BoolDataStorePropertyValue extends DataStorePropertyValue{
 		return new self(CommonTypes::getBool($in));
 	}
 }
-

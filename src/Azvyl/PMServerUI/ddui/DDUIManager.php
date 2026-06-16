@@ -315,7 +315,7 @@ final class DDUIManager{
 			return new BoolDataStoreValue($value);
 		}
 		if(is_int($value) || is_float($value)){
-			return new DoubleDataStoreValue((float) $value);
+			return new DoubleDataStoreValue((float)$value);
 		}
 		if(is_string($value)){
 			return new StringDataStoreValue($value);
@@ -399,7 +399,7 @@ final class DDUIManager{
 			return false;
 		}
 
-		$elementIndex = (int) $matches[1];
+		$elementIndex = (int)$matches[1];
 		$state = $this->elementInteractionState[$playerUuid][$formId][$elementIndex] ?? null;
 		if($state === null){
 			return false;
@@ -413,10 +413,10 @@ final class DDUIManager{
 			return;
 		}
 
-		$elementIndex = (int) $matches[1];
+		$elementIndex = (int)$matches[1];
 		$property = $matches[2];
 		$state = $this->elementInteractionState[$playerUuid][$formId][$elementIndex] ?? ['visible' => true, 'disabled' => false];
-		$state[$property] = (bool) $value;
+		$state[$property] = (bool)$value;
 		$this->elementInteractionState[$playerUuid][$formId][$elementIndex] = $state;
 	}
 }

@@ -20,4 +20,3 @@ final readonly class DividerElement implements CustomFormElement{
 		];
 	}
 }
-

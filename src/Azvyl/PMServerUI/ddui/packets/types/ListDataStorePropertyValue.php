@@ -42,5 +42,3 @@ final class ListDataStorePropertyValue extends DataStorePropertyValue{
 		return new self($entries);
 	}
 }
-
-

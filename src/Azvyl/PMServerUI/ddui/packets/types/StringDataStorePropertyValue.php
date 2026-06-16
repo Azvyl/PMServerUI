@@ -27,4 +27,3 @@ final class StringDataStorePropertyValue extends DataStorePropertyValue{
 		return new self(CommonTypes::getString($in));
 	}
 }
-

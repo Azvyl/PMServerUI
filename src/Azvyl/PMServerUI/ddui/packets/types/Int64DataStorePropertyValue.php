@@ -27,4 +27,3 @@ final class Int64DataStorePropertyValue extends DataStorePropertyValue{
 		return new self(LE::readSignedLong($in));
 	}
 }
-

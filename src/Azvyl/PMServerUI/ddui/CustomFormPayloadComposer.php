@@ -51,7 +51,7 @@ final class CustomFormPayloadComposer{
 				}
 			}
 			$manager->registerElementInteractionState($playerUuid, $formId, $index, $visible, $disabled);
-			$layoutEntries[] = new DataStoreMapEntry((string) $index, new MapDataStorePropertyValue($elementEntries));
+			$layoutEntries[] = new DataStoreMapEntry((string)$index, new MapDataStorePropertyValue($elementEntries));
 		}
 		$layoutEntries[] = new DataStoreMapEntry('length', new Int64DataStorePropertyValue(count($elements)));
 
@@ -64,4 +64,3 @@ final class CustomFormPayloadComposer{
 		]);
 	}
 }
-

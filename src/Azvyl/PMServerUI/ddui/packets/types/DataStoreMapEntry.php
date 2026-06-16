@@ -29,4 +29,3 @@ final readonly class DataStoreMapEntry{
 		$this->value->writeWithType($out);
 	}
 }
-
