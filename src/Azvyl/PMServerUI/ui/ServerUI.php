@@ -25,6 +25,6 @@ abstract class ServerUI{
 
 	abstract public function toPacketFormData() : array;
 
-	abstract public function processResponse(string $rawData = null, FormCancelationReason $cancelReason = null) : FormResponse;
+	abstract public function processResponse(?string $rawData = null, ?FormCancelationReason $cancelReason = null) : FormResponse;
 
 }

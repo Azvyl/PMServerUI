@@ -43,7 +43,7 @@ class ModalFormData extends ServerUI{
 	/**
 	 * @param string[]|UIRawMessage[] $items
 	 */
-	public function dropdown(string|UIRawMessage $label, array $items, int $defaultIndex = null, string|UIRawMessage $tooltip = null) : self{
+	public function dropdown(string|UIRawMessage $label, array $items, ?int $defaultIndex = null, string|UIRawMessage|null $tooltip = null) : self{
 		$dropdownElement = [
 			'type' => 'dropdown',
 			'text' => $label instanceof UIRawMessage ? $label->encode() : $label,
@@ -83,7 +83,7 @@ class ModalFormData extends ServerUI{
 		return $this;
 	}
 
-	public function slider(string|UIRawMessage $label, int $min, int $max, int $default = null, string|UIRawMessage $tooltip = null, int $step = null) : self{
+	public function slider(string|UIRawMessage $label, int $min, int $max, ?int $default = null, string|UIRawMessage|null $tooltip = null, ?int $step = null) : self{
 		$sliderElement = [
 			'type' => 'slider',
 			'text' => $label instanceof UIRawMessage ? $label->encode() : $label,
@@ -118,7 +118,7 @@ class ModalFormData extends ServerUI{
 		return $this;
 	}
 
-	public function textField(string|UIRawMessage $label, string|UIRawMessage $placeholderText = null, string|UIRawMessage $default = null, string|UIRawMessage $tooltip = null) : self{
+	public function textField(string|UIRawMessage $label, string|UIRawMessage|null $placeholderText = null, string|UIRawMessage|null $default = null, string|UIRawMessage|null $tooltip = null) : self{
 		$textFieldElement = [
 			'type' => 'input',
 			'text' => $label instanceof UIRawMessage ? $label->encode() : $label,
@@ -141,7 +141,7 @@ class ModalFormData extends ServerUI{
 		return $this;
 	}
 
-	public function toggle(string|UIRawMessage $label, bool $default = null, string|UIRawMessage $tooltip = null) : self{
+	public function toggle(string|UIRawMessage $label, ?bool $default = null, string|UIRawMessage|null $tooltip = null) : self{
 		$toggleElement = [
 			'type' => 'toggle',
 			'text' => $label instanceof UIRawMessage ? $label->encode() : $label,
@@ -178,7 +178,7 @@ class ModalFormData extends ServerUI{
 	}
 
 	/** @internal */
-	public function processResponse(string $rawData = null, FormCancelationReason $cancelReason = null) : ModalFormResponse{
+	public function processResponse(?string $rawData = null, ?FormCancelationReason $cancelReason = null) : ModalFormResponse{
 		if($cancelReason !== null){
 			return new ModalFormResponse($cancelReason, null);
 		}

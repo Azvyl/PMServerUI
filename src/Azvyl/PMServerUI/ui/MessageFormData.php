@@ -46,7 +46,7 @@ class MessageFormData extends ServerUI{
 	}
 
 	/** @internal */
-	public function processResponse(string $rawData = null, FormCancelationReason $cancelReason = null) : MessageFormResponse{
+	public function processResponse(?string $rawData = null, ?FormCancelationReason $cancelReason = null) : MessageFormResponse{
 		if($cancelReason !== null){
 			return new MessageFormResponse($cancelReason, null);
 		}

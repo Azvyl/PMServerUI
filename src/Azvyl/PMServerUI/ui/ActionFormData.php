@@ -64,7 +64,7 @@ class ActionFormData extends ServerUI{
 	}
 
 	/** @internal */
-	public function processResponse(string $rawData = null, FormCancelationReason $cancelReason = null) : ActionFormResponse{
+	public function processResponse(?string $rawData = null, ?FormCancelationReason $cancelReason = null) : ActionFormResponse{
 		if($cancelReason !== null){
 			return new ActionFormResponse($cancelReason, null);
 		}
