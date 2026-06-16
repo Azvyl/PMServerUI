@@ -1,6 +1,6 @@
 name: PMServerUI
-version: 1.0.2
-antigen: DavyCraft648\PMServerUI
+version: 2.0.0
+antigen: Azvyl\PMServerUI
 api: 5.0.0
-authors: [DavyCraft648]
+authors: [Azvyl]
 description: Integrate UI features available in the Script API to PocketMine-MP

@@ -32,7 +32,7 @@ library that other plugins *include* in their code.
   following command:
 
   ```bash
-  composer require davycraft648/pmserver-ui
+  composer require azvyl/pmserver-ui
   ```
 
   After running the command, your `composer.json` file will be updated. You can inspect it to see the new dependency
@@ -42,7 +42,7 @@ library that other plugins *include* in their code.
   {
     "require": {
       // other dependencies ...
-      "davycraft648/pmserver-ui": "^1.0"
+      "azvyl/pmserver-ui": "^2.0"
     }
   }
   ```
@@ -56,15 +56,15 @@ library that other plugins *include* in their code.
    projects:
      YourPlugin:
        libs:
-         - src: DavyCraft648/PMServerUI/PMServerUI
-           version: ^1.0.2
+         - src: Azvyl/PMServerUI/PMServerUI
+           version: ^2.0.0
    ```
 
 ---
 
 ## Example Usage (For Developers)
 
-See plugin example [here](https://github.com/DavyCraft648/PMServerUI-Example)
+See plugin example [here](https://github.com/Azvyl/PMServerUI-Example)
 
 ---
 
